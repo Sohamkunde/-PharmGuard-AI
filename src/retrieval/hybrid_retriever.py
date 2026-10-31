@@ -17,6 +17,10 @@ from chromadb.utils import embedding_functions
 from src.indexing.store import (
     tokenize_bm25,
     get_embedding_function,
+    load_corpus_chunks,
+    index_in_chromadb,
+    build_and_save_bm25_index,
+    CHUNKS_FILE,
     CHROMA_DIR,
     BM25_INDEX_FILE,
     COLLECTION_NAME,
@@ -58,10 +62,38 @@ class HybridRetriever:
         logger.info("Initializing HybridRetriever...")
         self.client = chromadb.PersistentClient(path=str(self.chroma_dir))
         self.embedding_func = embedding_func or get_embedding_function()
-        self.collection = self.client.get_collection(
-            name=self.collection_name,
-            embedding_function=self.embedding_func,
-        )
+
+        try:
+            self.collection = self.client.get_collection(
+                name=self.collection_name,
+                embedding_function=self.embedding_func,
+            )
+        except Exception as e:
+            logger.warning(
+                "Chroma collection '%s' not found (%s). Attempting auto-recovery from corpus chunks...",
+                self.collection_name,
+                e,
+            )
+            if CHUNKS_FILE.exists():
+                chunks = load_corpus_chunks(CHUNKS_FILE)
+                index_in_chromadb(chunks, self.chroma_dir, self.collection_name, self.embedding_func)
+                self.collection = self.client.get_collection(
+                    name=self.collection_name,
+                    embedding_function=self.embedding_func,
+                )
+            else:
+                raise RuntimeError(
+                    f"Collection '{self.collection_name}' does not exist and corpus chunks not found at {CHUNKS_FILE}. "
+                    "Ensure 'chroma_db/' is uploaded or run src/indexing/store.py first."
+                ) from e
+
+        if not self.bm25_file.exists():
+            logger.warning("BM25 index not found at %s. Auto-building from corpus chunks...", self.bm25_file)
+            if CHUNKS_FILE.exists():
+                chunks = load_corpus_chunks(CHUNKS_FILE)
+                build_and_save_bm25_index(chunks, self.bm25_file)
+            else:
+                raise FileNotFoundError(f"BM25 index missing and {CHUNKS_FILE} not found.")
 
         logger.info("Loading BM25 index payload from %s...", self.bm25_file)
         with open(self.bm25_file, "rb") as f:

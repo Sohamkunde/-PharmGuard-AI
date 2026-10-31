@@ -18,8 +18,9 @@ __pycache__/
 .coverage
 htmlcov/
 
-# Vector Store & Index Caches (can be regenerated via src/indexing/store.py)
-chroma_db/
+# Vector Store & Index Caches (Included so cloud deployments like Streamlit Community Cloud have the database)
+# chroma_db/
+test_chroma_db/
 
 # Streamlit logs & cache
 .streamlit/secrets.toml
