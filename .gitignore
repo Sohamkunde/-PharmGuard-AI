@@ -1,0 +1,33 @@
+# Environment variables & secrets (CRITICAL: Never commit API keys)
+.env
+.env.*
+!.env.example
+
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python byte-code & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Vector Store & Index Caches (can be regenerated via src/indexing/store.py)
+chroma_db/
+
+# Streamlit logs & cache
+.streamlit/secrets.toml
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+

@@ -1,0 +1,127 @@
+{
+  "benchmark_name": "PharmGuard Clinical RAG Benchmark",
+  "version": "1.0",
+  "description": "15 high-risk clinical pharmacology scenarios covering drug-drug interactions, renal eGFR dosing cutoffs, CYP3A4 modulators, and Serotonin Syndrome washout protocols.",
+  "test_cases": [
+    {
+      "id": "CLIN-01",
+      "query": "What is the interaction risk between Paxlovid and Atorvastatin, and how should it be managed?",
+      "target_drugs": ["Paxlovid", "Atorvastatin"],
+      "expected_sections": ["drug_interactions", "cyp3a4_drug_interactions_guideline"],
+      "ground_truth_answer": "Paxlovid (nirmatrelvir/ritonavir) is a potent mechanism-based inhibitor of CYP3A4. Co-administration dramatically increases atorvastatin plasma concentration (4-fold to 12-fold), precipitating severe rhabdomyolysis and acute renal failure. Management: temporarily suspend atorvastatin during the 5-day Paxlovid course, or cap atorvastatin dosage at 20 mg daily, or substitute with a non-CYP3A4 statin (rosuvastatin/pravastatin).",
+      "key_facts": ["CYP3A4 inhibition", "rhabdomyolysis", "suspend atorvastatin", "ritonavir"]
+    },
+    {
+      "id": "CLIN-02",
+      "query": "Can a patient taking Phenelzine be prescribed Sumatriptan for migraine headaches?",
+      "target_drugs": ["Phenelzine", "Sumatriptan"],
+      "expected_sections": ["drug_interactions", "contraindications", "serotonin_syndrome_clinical_guideline"],
+      "ground_truth_answer": "Co-administration of the MAO inhibitor Phenelzine with the selective 5-HT1 receptor agonist Sumatriptan is contraindicated or strictly discouraged. Simultaneous inhibition of monoamine oxidase metabolism and 5-HT receptor agonism produces excessive central and peripheral serotonergic stimulation, creating high risk for life-threatening Serotonin Syndrome.",
+      "key_facts": ["MAO inhibitor", "serotonin syndrome", "contraindicated", "5-HT"]
+    },
+    {
+      "id": "CLIN-03",
+      "query": "What is the eGFR cutoff for Metformin and what fatal complication can occur in renal impairment?",
+      "target_drugs": ["Metformin", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["contraindications", "dosage_and_administration", "renal_egfr_dosing_guidelines"],
+      "ground_truth_answer": "Metformin is strictly contraindicated in patients with severe renal impairment (eGFR < 30 mL/min/1.73m²). In moderate impairment (eGFR 30–44 mL/min), do not initiate in new patients, and cap maximum daily dose at 1000 mg. Accumulation of metformin impairs mitochondrial oxidation of lactate, provoking fatal Metformin-Associated Lactic Acidosis (MALA).",
+      "key_facts": ["eGFR < 30", "contraindicated", "lactic acidosis", "1000 mg"]
+    },
+    {
+      "id": "CLIN-04",
+      "query": "What are the clinical consequences of co-administering Warfarin and Ibuprofen?",
+      "target_drugs": ["Warfarin", "Ibuprofen"],
+      "expected_sections": ["drug_interactions", "warnings_and_cautions"],
+      "ground_truth_answer": "Concurrent administration of Warfarin (a vitamin K antagonist) and Ibuprofen (an NSAID) synergistically amplifies hemorrhagic risk. Ibuprofen inhibits platelet COX-1 (compromising primary hemostasis) and induces gastrointestinal mucosal erosions, while warfarin impairs secondary fibrin clot formation, leading to severe or fatal gastrointestinal bleeding.",
+      "key_facts": ["bleeding", "gastrointestinal hemorrhage", "platelet inhibition", "NSAID"]
+    },
+    {
+      "id": "CLIN-05",
+      "query": "Is Clarithromycin safe to prescribe with Colchicine in a patient with renal impairment?",
+      "target_drugs": ["Clarithromycin", "Colchicine", "CYP3A4 Drug-Drug Interactions"],
+      "expected_sections": ["contraindications", "drug_interactions", "cyp3a4_drug_interactions_guideline"],
+      "ground_truth_answer": "Clarithromycin is a potent dual CYP3A4 and P-glycoprotein inhibitor. In patients with renal or hepatic impairment, co-administration with colchicine is strictly CONTRAINDICATED. Profound inhibition of colchicine elimination causes fatal multiorgan toxicity, including bone marrow aplasia, severe neuromyopathy, rhabdomyolysis, and circulatory collapse.",
+      "key_facts": ["CONTRAINDICATED", "CYP3A4", "P-gp", "fatal", "neuromyopathy"]
+    },
+    {
+      "id": "CLIN-06",
+      "query": "How should Apixaban dosing be adjusted based on renal function and patient characteristics?",
+      "target_drugs": ["Apixaban", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["dosage_and_administration", "renal_egfr_dosing_guidelines"],
+      "ground_truth_answer": "For nonvalvular atrial fibrillation, standard Apixaban dose is 5 mg BID. The dose must be reduced by 50% to 2.5 mg BID if the patient meets at least TWO of the following ABC criteria: Age ≥ 80 years, Body Weight ≤ 60 kg, or Serum Creatinine ≥ 1.5 mg/dL.",
+      "key_facts": ["2.5 mg BID", "Age >= 80", "Weight <= 60", "Serum Cr >= 1.5"]
+    },
+    {
+      "id": "CLIN-07",
+      "query": "Why is the combination of Paxlovid and Amiodarone contraindicated?",
+      "target_drugs": ["Paxlovid", "Amiodarone", "CYP3A4 Drug-Drug Interactions"],
+      "expected_sections": ["contraindications", "drug_interactions", "cyp3a4_drug_interactions_guideline"],
+      "ground_truth_answer": "Paxlovid (nirmatrelvir/ritonavir) is strictly CONTRAINDICATED with Amiodarone. Ritonavir is an ultra-potent irreversible CYP3A4 and P-gp inhibitor, resulting in massive accumulation of amiodarone. Due to amiodarone's narrow therapeutic index and months-long elimination half-life, this interaction triggers fatal cardiac arrhythmias and QT prolongation.",
+      "key_facts": ["CONTRAINDICATED", "arrhythmias", "CYP3A4", "half-life"]
+    },
+    {
+      "id": "CLIN-08",
+      "query": "What are the contraindications for Spironolactone in chronic kidney disease?",
+      "target_drugs": ["Spironolactone", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["contraindications", "warnings_and_cautions", "renal_egfr_dosing_guidelines"],
+      "ground_truth_answer": "Spironolactone is contraindicated in patients with severe renal impairment (eGFR < 30 mL/min/1.73m² or progressive renal disease) and in patients with baseline serum potassium > 5.0 mEq/L. Aldosterone antagonism causes renal potassium retention, leading to life-threatening hyperkalemia, cardiac arrest, and fatal dysrhythmias.",
+      "key_facts": ["eGFR < 30", "potassium > 5.0", "hyperkalemia", "contraindicated"]
+    },
+    {
+      "id": "CLIN-09",
+      "query": "What is the required washout period when switching from Fluoxetine to Phenelzine?",
+      "target_drugs": ["Fluoxetine", "Phenelzine", "Serotonin Syndrome Diagnosis & Management"],
+      "expected_sections": ["contraindications", "dosage_and_administration", "serotonin_syndrome_clinical_guideline"],
+      "ground_truth_answer": "A strict mandatory 5-WEEK (35-day) washout period must elapse after stopping Fluoxetine before starting an MAOI such as Phenelzine. Fluoxetine and its active metabolite norfluoxetine have exceptionally long half-lives (norfluoxetine t1/2: 7 to 15 days); starting an MAOI prematurely causes lethal Serotonin Syndrome.",
+      "key_facts": ["5-week", "35-day", "norfluoxetine", "serotonin syndrome"]
+    },
+    {
+      "id": "CLIN-10",
+      "query": "Can Tramadol and Venlafaxine be safely combined for pain and depression?",
+      "target_drugs": ["Tramadol", "Venlafaxine", "Serotonin Syndrome Diagnosis & Management"],
+      "expected_sections": ["drug_interactions", "warnings_and_cautions", "serotonin_syndrome_clinical_guideline"],
+      "ground_truth_answer": "The combination of Tramadol and Venlafaxine is hazardous and should be avoided. Tramadol possesses dual mechanism as a mu-opioid agonist and a serotonin/norepinephrine reuptake inhibitor. Co-administration with Venlafaxine produces additive serotonergic surge, sharply increasing the risk of Serotonin Syndrome and lowering the seizure threshold.",
+      "key_facts": ["serotonin syndrome", "avoid", "seizures", "reuptake inhibitor"]
+    },
+    {
+      "id": "CLIN-11",
+      "query": "What dosage adjustments or precautions are mandated for Methotrexate in renal impairment?",
+      "target_drugs": ["Methotrexate", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["boxed_warning", "dosage_and_administration", "renal_egfr_dosing_guidelines"],
+      "ground_truth_answer": "Methotrexate is primarily eliminated via renal glomerular filtration and active tubular secretion. For eGFR 30–50 mL/min, reduce weekly dose by 50%. Methotrexate is strictly contraindicated if eGFR < 30 mL/min. Impaired clearance precipitates toxic plasma accumulation, causing fatal myelosuppression, pancytopenia, and acute renal failure.",
+      "key_facts": ["reduce by 50%", "eGFR < 30", "contraindicated", "myelosuppression"]
+    },
+    {
+      "id": "CLIN-12",
+      "query": "How does Ciprofloxacin affect Tacrolimus blood levels and renal safety?",
+      "target_drugs": ["Tacrolimus", "Ciprofloxacin", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["drug_interactions", "warnings_and_cautions", "cyp3a4_drug_interactions_guideline"],
+      "ground_truth_answer": "Ciprofloxacin inhibits CYP3A4-mediated hepatic and intestinal clearance of Tacrolimus. Tacrolimus whole blood trough concentrations multiply 2- to 4-fold, provoking acute afferent arteriolar vasoconstriction and severe nephrotoxicity. Management requires preemptive 25–50% tacrolimus dose reduction, daily therapeutic drug monitoring (TDM), and renal function tests.",
+      "key_facts": ["CYP3A4", "trough levels", "nephrotoxicity", "TDM"]
+    },
+    {
+      "id": "CLIN-13",
+      "query": "What is the 'Triple Whammy' in renal pharmacotherapy and why is it dangerous?",
+      "target_drugs": ["Lisinopril", "Ibuprofen", "Spironolactone", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["drug_interactions", "renal_egfr_dosing_guidelines"],
+      "ground_truth_answer": "The 'Triple Whammy' is the concurrent administration of an ACE inhibitor/ARB (e.g. Lisinopril), a diuretic (e.g. Spironolactone), and an NSAID (e.g. Ibuprofen). The diuretic produces hypovolemia; the ACE-I inhibits angiotensin II efferent arteriolar vasoconstriction; and the NSAID inhibits prostaglandin afferent arteriolar vasodilation. Together, they trigger acute hemodynamic collapse of glomerular filtration, causing severe Acute Kidney Injury (AKI).",
+      "key_facts": ["Triple Whammy", "AKI", "afferent", "efferent", "NSAID", "ACE inhibitor"]
+    },
+    {
+      "id": "CLIN-14",
+      "query": "What are the renal thresholds for discontinuing Empagliflozin?",
+      "target_drugs": ["Empagliflozin", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["dosage_and_administration", "warnings_and_cautions", "renal_egfr_dosing_guidelines"],
+      "ground_truth_answer": "For glycemic control in type 2 diabetes, Empagliflozin's efficacy is markedly blunted when eGFR is < 30 mL/min/1.73m². Empagliflozin should be discontinued if eGFR falls below 20 mL/min/1.73m² or if the patient is initiated on maintenance renal replacement therapy (dialysis).",
+      "key_facts": ["eGFR < 30", "eGFR < 20", "dialysis", "discontinue"]
+    },
+    {
+      "id": "CLIN-15",
+      "query": "What severe adverse reaction occurs with Allopurinol accumulation in kidney disease?",
+      "target_drugs": ["Allopurinol", "Renal Impairment & eGFR Dosing"],
+      "expected_sections": ["boxed_warning", "dosage_and_administration", "renal_egfr_dosing_guidelines"],
+      "ground_truth_answer": "Allopurinol's primary active metabolite, oxypurinol, is cleared exclusively by the kidneys and accumulates dramatically in renal impairment. Accumulation triggers life-threatening Allopurinol Hypersensitivity Syndrome (AHS), characterized by toxic epidermal necrolysis, DRESS, exfoliative dermatitis, and hepatic necrosis. In renal impairment (eGFR 15–29 mL/min), initiate dose at 50–100 mg daily.",
+      "key_facts": ["oxypurinol", "Allopurinol Hypersensitivity Syndrome", "AHS", "50-100 mg"]
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "benchmark_summary": {
+    "total_test_cases": 15,
+    "baseline_naive_dense": {
+      "mean_context_precision": 0.8204,
+      "mean_context_recall": 0.7389,
+      "mrr": 0.8111,
+      "hit_at_1": 0.7333,
+      "hit_at_4": 0.9333
+    },
+    "pharmguard_hybrid_reranker": {
+      "mean_context_precision": 0.9333,
+      "mean_context_recall": 0.8111,
+      "mrr": 0.9333,
+      "hit_at_1": 0.8667,
+      "hit_at_4": 1.0
+    }
+  },
+  "detailed_results": [
+    {
+      "id": "CLIN-01",
+      "query": "What is the interaction risk between Paxlovid and Atorvastatin, and how should it be managed?",
+      "baseline": {
+        "context_precision": 0.6389,
+        "context_recall": 1.0,
+        "mrr": 0.5,
+        "hit_at_1": 0.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-02",
+      "query": "Can a patient taking Phenelzine be prescribed Sumatriptan for migraine headaches?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-03",
+      "query": "What is the eGFR cutoff for Metformin and what fatal complication can occur in renal impairment?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 0.5,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-04",
+      "query": "What are the clinical consequences of co-administering Warfarin and Ibuprofen?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 0.5,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 0.5,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-05",
+      "query": "Is Clarithromycin safe to prescribe with Colchicine in a patient with renal impairment?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 0.6667,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 0.6667,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-06",
+      "query": "How should Apixaban dosing be adjusted based on renal function and patient characteristics?",
+      "baseline": {
+        "context_precision": 0.0,
+        "context_recall": 0.5,
+        "mrr": 0.0,
+        "hit_at_1": 0.0,
+        "hit_at_4": 0.0
+      },
+      "pharmguard": {
+        "context_precision": 0.5833,
+        "context_recall": 1.0,
+        "mrr": 0.5,
+        "hit_at_1": 0.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-07",
+      "query": "Why is the combination of Paxlovid and Amiodarone contraindicated?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 0.6667,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-08",
+      "query": "What are the contraindications for Spironolactone in chronic kidney disease?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 0.5,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-09",
+      "query": "What is the required washout period when switching from Fluoxetine to Phenelzine?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-10",
+      "query": "Can Tramadol and Venlafaxine be safely combined for pain and depression?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-11",
+      "query": "What dosage adjustments or precautions are mandated for Methotrexate in renal impairment?",
+      "baseline": {
+        "context_precision": 0.3333,
+        "context_recall": 0.5,
+        "mrr": 0.3333,
+        "hit_at_1": 0.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 0.5,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-12",
+      "query": "How does Ciprofloxacin affect Tacrolimus blood levels and renal safety?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-13",
+      "query": "What is the 'Triple Whammy' in renal pharmacotherapy and why is it dangerous?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 0.25,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 1.0,
+        "context_recall": 0.5,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-14",
+      "query": "What are the renal thresholds for discontinuing Empagliflozin?",
+      "baseline": {
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 0.9167,
+        "context_recall": 1.0,
+        "mrr": 1.0,
+        "hit_at_1": 1.0,
+        "hit_at_4": 1.0
+      }
+    },
+    {
+      "id": "CLIN-15",
+      "query": "What severe adverse reaction occurs with Allopurinol accumulation in kidney disease?",
+      "baseline": {
+        "context_precision": 0.3333,
+        "context_recall": 0.5,
+        "mrr": 0.3333,
+        "hit_at_1": 0.0,
+        "hit_at_4": 1.0
+      },
+      "pharmguard": {
+        "context_precision": 0.5,
+        "context_recall": 0.5,
+        "mrr": 0.5,
+        "hit_at_1": 0.0,
+        "hit_at_4": 1.0
+      }
+    }
+  ]
+}
